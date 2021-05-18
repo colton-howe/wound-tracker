@@ -1,4 +1,13 @@
-First Structure for Injected Text to fill in more descriptions about a die roll button.
+Foundry VTT Module to add wounds taken when you take a certain threshold of your health.
+
+Request of a friend.
+
+Installation
+--------------
+Go to Foundry VTT's "Add-On Module" tab
+Click "Install Module"
+Paste "https://github.com/colton-howe/wound-tracker/releases/latest/download/module.json" into the manifest URL
+Hit Install
 
 Directory Structure
 # Templates - HTML Files
