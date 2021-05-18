@@ -1,0 +1,16 @@
+{
+    "name": "wound-tracker",
+    "title": "Wound Tracker",
+    "description": "Custom module to prompt for a wound when a threshold of damage is taken",
+    "author": "colton-howe",
+    "version": "1.0.0",
+    "minimumCoreVersion": "0.5.0",
+    "dependencies": [
+        {
+            "name": "lib-wrapper"
+        }
+    ],
+    "scripts": [
+        "scripts/wound-tracker.js"
+    ]
+  }
