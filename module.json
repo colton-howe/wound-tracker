@@ -3,7 +3,7 @@
     "title": "Wound Tracker",
     "description": "Custom module to prompt for a wound when a threshold of damage is taken",
     "author": "colton-howe",
-    "version": "1.0.0",
+    "version": "1.1.0",
     "minimumCoreVersion": "0.5.0",
     "compatibleCoreVersion": "0.7.9",
     "dependencies": [
