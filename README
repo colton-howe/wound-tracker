@@ -9,6 +9,14 @@ Click "Install Module"
 Paste "https://github.com/colton-howe/wound-tracker/releases/latest/download/module.json" into the manifest URL
 Hit Install
 
+Setup
+--------------
+To get this module to work properly, you also need to create the statuses. The statuses need to be named "X Wound Y", where X is the wound and Y is the level of wound. For example, a level 1 head wound should be named "head wound 1".
+
+Usage
+--------------
+When a characters HP is changed by a player, it will calculate if the HP difference is equal to or greater then a quarter of the characters HP. If it is, then it will prompt the user for a wound for each quarter of HP that is reduced at once. It will then try to add a status effect based on the selection. It will also keep track of what statuses you have and only allow for selection of statues you still can take.
+
 Directory Structure
 # Templates - HTML Files
 # Scripts - JS Files
