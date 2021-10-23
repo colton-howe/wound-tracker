@@ -37,15 +37,15 @@ const WoundDescription = {
 
 //Wrapper around Actor._handleUpdate to grab previous HP, since its not supplied in the updateActor hook
 Hooks.on("init", () => {
-  libWrapper.register("wound-tracker", 'Actor._handleUpdate', (wrapped, ...args) => {
-    const {request, result = [], userId} = args[0];
-    result.map((data) => {
-      const entity = Actor.collection.get(data._id, {strict: true})
+  libWrapper.register("wound-tracker", 'Actor.updateDocuments', (wrapped, ...args) => {
+    const [updates = [], context] = args;
+    updates.map((data) => {
+      const entity = game.actors.get(data._id, {strict: true})
       if (entity && entity.data && entity.data.data && entity.data.data.attributes && entity.data.data.attributes.hp && entity.data.data.attributes.hp.value != null) {
         actorIdToHpMap[data._id] = entity.data.data.attributes.hp.value;
       } 
     });
-    return wrapped({request, result, userId});
+    return wrapped(updates, context);
   }, "WRAPPER");
 });
 
