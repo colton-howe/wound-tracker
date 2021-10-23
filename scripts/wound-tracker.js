@@ -139,7 +139,9 @@ const applyWound = (actor, woundType) => {
   const woundKey = woundTypeID + (typedWoundEffects.length + 1);
   const matchingWoundStatus = CONFIG.statusEffects.find(status => status.id == woundKey);
   if (matchingWoundStatus) {
-    ActiveEffect.create(matchingWoundStatus, actor).create();
+    actor.getActiveTokens().forEach(token => {
+      token.toggleEffect(matchingWoundStatus);
+    });
   }
 };
 
