@@ -6,12 +6,14 @@ Hooks.once('ready', () => {
 // Map of actor to HP
 const actorIdToHpMap = {};
 const STATUS_PREFIX = "combat-utility-belt.wound-";
+const MAX_NUM_OF_WOUNDS = 5;
 const Wound = {
   LEG: "leg",
   ARM: "arm",
   CHEST: "chest",
   HEAD: "head"
 };
+
 const WoundDescription = {
   leg: {
     1: "-10ft Speed",
@@ -57,7 +59,7 @@ Hooks.on("updateActor", (entity, entityChanges, options, userId) => {
 
   const changedActorData = entityChanges.data;
 
-  if (changedActorData.attributes && changedActorData.attributes.hp && changedActorData.attributes.hp.value != null) {
+  if (changedActorData && changedActorData.attributes && changedActorData.attributes.hp && changedActorData.attributes.hp.value != null) {
     const actorData = entity.data.data;
     const actorMaxHp = actorData.attributes.hp.max;
     const actorPreviousHp = actorIdToHpMap[entity.data._id];
@@ -141,7 +143,7 @@ const applyWound = (actor, woundType) => {
   if (matchingWoundStatus) {
     actor.getActiveTokens().forEach(token => {
       token.toggleEffect(matchingWoundStatus);
-    });
+    })
   }
 };
 
@@ -164,5 +166,5 @@ const getNumberOfWounds = (maxHp, hpLoss) => {
     return 0;
   }
 
-  return Math.floor(hpLoss/(maxHp*woundThreshold));
+  return Math.min(MAX_NUM_OF_WOUNDS, Math.floor(hpLoss/(maxHp*woundThreshold)));
 }
